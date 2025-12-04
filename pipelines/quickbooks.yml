@@ -1,0 +1,9 @@
+version: pipelines/v0.1
+label: Quickbooks
+name: quickbooks
+timeout: 0
+max_retries: 0
+data_components:
+- tap-quickbooks
+- Warehouse
+- dbt
