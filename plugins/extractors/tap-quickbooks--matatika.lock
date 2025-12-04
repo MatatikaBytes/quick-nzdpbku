@@ -1,0 +1,167 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-quickbooks",
+  "namespace": "tap_quickbooks",
+  "variant": "matatika",
+  "label": "Quickbooks",
+  "docs": "https://www.matatika.com/data-details/tap-quickbooks/",
+  "repo": "https://github.com/Matatika/tap-quickbooks",
+  "pip_url": "git+https://github.com/Matatika/tap-quickbooks.git@v1.0.0",
+  "description": "Quickbooks is an accounting software for small businesses and self-employed individuals. \n\nQuickbooks is a cloud-based accounting software that helps small businesses and self-employed individuals manage their finances. It allows users to track income and expenses, create and send invoices, manage bills and payments, and generate financial reports. Quickbooks also offers features such as inventory tracking, payroll management, and tax preparation. With its user-friendly interface and mobile app, Quickbooks makes it easy for users to stay on top of their finances from anywhere.",
+  "logo_url": "/assets/logos/extractors/quickbooks.png",
+  "capabilities": [
+    "state",
+    "properties",
+    "discover"
+  ],
+  "settings": [
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "string",
+      "value": "https://appcenter.intuit.com/app/connect/oauth2",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "description": "The endpoint used to create and refresh OAuth tokens.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "string",
+      "value": "openid profile email phone address com.intuit.quickbooks.accounting",
+      "label": "OAuth scopes we need to request access to",
+      "description": "The specific permissions we need to request access to in order to use the Quickbooks API.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "kind": "string",
+      "label": "Access Token",
+      "description": "The token used to authenticate and authorize API requests.",
+      "hidden": true,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "string",
+      "label": "OAuth Refresh Token",
+      "description": "The token used to refresh the access token when it expires.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "string",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "description": "An optional function that will be called to refresh the access token using the refresh token.",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "string",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "description": "An optional setting that sets the Authorization header on the request to refresh the access token.",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "realmId",
+      "kind": "string",
+      "label": "Realm ID",
+      "description": "The unique identifier for a Quickbooks company.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "client_id",
+      "kind": "string",
+      "label": "Client ID",
+      "description": "The identifier for the application connecting to the Quickbooks API.",
+      "hidden": true,
+      "sensitive": true,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "client_secret",
+      "kind": "string",
+      "label": "Client Secret",
+      "description": "The secret key for the application connecting to the Quickbooks API.",
+      "hidden": true,
+      "sensitive": true,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "refresh_token",
+      "kind": "string",
+      "label": "Refresh Token",
+      "description": "A token used to refresh the access token for the Quickbooks API.",
+      "hidden": true,
+      "sensitive": true,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "string",
+      "label": "Start Date",
+      "description": "The date from which to start retrieving data from Quickbooks in format '%Y-%m-%dT%H:%M:%SZ'.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "is_sandbox",
+      "kind": "boolean",
+      "value": false,
+      "label": "Is Sandbox",
+      "description": "A boolean value indicating whether the connection is to a sandbox environment or not.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "select_fields_by_default",
+      "kind": "boolean",
+      "value": true,
+      "label": "Select Fields By Default",
+      "description": "A boolean value indicating whether to select all fields by default when querying Quickbooks data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "state_message_threshold",
+      "kind": "integer",
+      "value": 1000,
+      "label": "State Message Threshold",
+      "description": "The maximum number of state messages to retrieve from Quickbooks.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "max_workers",
+      "kind": "integer",
+      "value": 8,
+      "label": "Max Workers",
+      "description": "The maximum number of workers to use when processing data from Quickbooks.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}
